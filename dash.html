@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Climático e Internações</title>
+
+  <style>
+    body{
+      font-family: Arial, sans-serif;
+      background:#f2f2f2;
+      margin:0;
+    }
+    header{
+      background:#00695c;
+      color:white;
+      padding:16px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .container{
+      max-width:1200px;
+      margin:auto;
+      padding:20px;
+    }
+
+    /* KPIs */
+    .linha-kpi{
+      display:flex;
+      gap:15px;
+      margin-bottom:20px;
+    }
+    .kpi{
+      background:white;
+      padding:15px;
+      border-radius:8px;
+      flex:1;
+      box-shadow:0 2px 8px rgba(0,0,0,.1);
+    }
+    .kpi h3{
+      margin:0;
+      font-size:0.85rem;
+      color:#555;
+    }
+    .kpi p{
+      margin-top:8px;
+      font-size:1.3rem;
+      font-weight:bold;
+    }
+    .alto{ color:#b91c1c; }
+
+    /* Gráficos */
+    .grade-graficos{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:15px;
+    }
+    .card-grafico{
+      background:white;
+      padding:15px;
+      border-radius:8px;
+      box-shadow:0 2px 8px rgba(0,0,0,.1);
+      min-height:300px;
+    }
+
+    /* Widgets */
+    .linha-widgets{
+      display:flex;
+      gap:15px;
+      margin-top:15px;
+    }
+    .widget{
+      flex:1;
+      padding:12px;
+      background:white;
+      border-radius:8px;
+      box-shadow:0 2px 8px rgba(0,0,0,.1);
+    }
+
+    /* Botão */
+    .botao{
+      background:#00bfa5;
+      color:#003b34;
+      border:none;
+      padding:10px 14px;
+      border-radius:6px;
+      cursor:pointer;
+      font-weight:bold;
+    }
+
+    /* Modal */
+    .modal{
+      display:none;
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.5);
+      z-index:999;
+    }
+    .conteudo-modal{
+      background:white;
+      width:90%;
+      max-width:800px;
+      margin:5% auto;
+      padding:20px;
+      border-radius:10px;
+    }
+    .fechar{
+      float:right;
+      cursor:pointer;
+      font-size:22px;
+      font-weight:bold;
+    }
+  </style>
+
+</head>
+<body>
+
+<header>
+  <h2>Dashboard Climático e Internações</h2>
+  <button id="botaoAbrir" class="botao">Explicação Científica</button>
+</header>
+
+<div class="container">
+
+  <!-- KPIs -->
+  <div class="linha-kpi">
+    <div class="kpi">
+      <h3>Umidade Mês Atual</h3>
+      <p id="kpiUmidade">--</p>
+    </div>
+    <div class="kpi">
+      <h3>Risco de Internações</h3>
+      <p id="kpiRisco" class="alto">--</p>
+    </div>
+    <div class="kpi">
+      <h3>Pico Detectado</h3>
+      <p id="kpiPico">--</p>
+    </div>
+  </div>
+
+  <!-- Gráficos -->
+  <div class="grade-graficos">
+    <div class="card-grafico">
+      <h4>Umidade Mensal</h4>
+      <div id="graficoUmidade"></div>
+    </div>
+
+    <div class="card-grafico">
+      <h4>Internações Mensais</h4>
+      <div id="graficoInternacoes"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Modal -->
+<div id="modalExplicacao" class="modal">
+  <div class="conteudo-modal">
+    <span id="btnFechar" class="fechar">&times;</span>
+    <h2>Explicação Científica</h2>
+
+    <p><b>Resumo:</b> Ambientes úmidos favorecem vírus e alergênicos → mais internações meses depois.</p>
+
+    <p><b>Seca</b> → Resseca vias aéreas, piora doenças crônicas, porém <u>reduz</u> contágio → correlação negativa.</p>
+
+    <p><b>Umidade</b> → Favorece proliferação de vírus e fungos → internações aumentam com ~3 meses de atraso.</p>
+
+    <p>Conclusão: clima ajuda a prever demanda hospitalar e planejamento de ventiladores.</p>
+  </div>
+</div>
+
+<!-- ApexCharts -->
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+<script>
+  // Dados simulados
+  const meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+  const dadosUmidade = [72, 75, 78, 82, 85, 88, 90, 87, 80, 76, 74, 73];
+  const dadosInternacoes = [300, 320, 330, 350, 420, 510, 570, 545, 490, 445, 380, 360];
+
+  // Atualizar KPIs
+  document.getElementById("kpiUmidade").innerText = dadosUmidade.at(-1) + "%";
+  document.getElementById("kpiPico").innerText = "3 meses atrás";
+
+  function definirRisco(umidade, internacoes) {
+    const aumento = internacoes.at(-1) - internacoes.at(-3);
+
+    if( umidade.at(-1) > 80 && aumento > 50 ){
+      return "ALTO"
+    }
+    return "MÉDIO"
+  }
+
+  document.getElementById("kpiRisco").innerText = definirRisco(dadosUmidade, dadosInternacoes);
+
+  // Gráfico umidade
+  new ApexCharts(document.querySelector("#graficoUmidade"), {
+    chart:{ type:"bar" },
+    series:[{ name:"Umidade (%)", data:dadosUmidade }],
+    xaxis:{ categories:meses }
+  }).render();
+
+  // Gráfico internações
+  new ApexCharts(document.querySelector("#graficoInternacoes"), {
+    chart:{ type:"line" },
+    series:[{ name:"Internações", data:dadosInternacoes }],
+    xaxis:{ categories:meses }
+  }).render();
+
+  // Modal
+  const modal = document.getElementById("modalExplicacao");
+  document.getElementById("botaoAbrir").onclick = ()=> modal.style.display = "block";
+  document.getElementById("btnFechar").onclick = ()=> modal.style.display = "none";
+  window.onclick = e => { if(e.target === modal) modal.style.display="none" }
+</script>
+
+</body>
+</html>
