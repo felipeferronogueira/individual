@@ -176,12 +176,12 @@
 <script>
   // Dados simulados
   const meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
-  const dadosUmidade = [72, 75, 78, 82, 85, 88, 90, 87, 80, 76, 74, 73];
-  const dadosInternacoes = [300, 320, 330, 350, 420, 510, 570, 545, 490, 445, 380, 360];
+  const dadosUmidade = [72, 75, 78, 82, 85, 88, 90, 87, 80, 76, 74, 0];
+  const dadosInternacoes = [300, 320, 330, 350, 420, 510, 570, 545, 490, 445, 380, 190];
 
   // Atualizar KPIs
-  document.getElementById("kpiUmidade").innerText = dadosUmidade.at(-1) + "%";
-  document.getElementById("kpiPico").innerText = "3 meses atrás";
+  document.getElementById("kpiUmidade").innerText = dadosUmidade.at(-2) + "%";
+  document.getElementById("kpiPico").innerText = "4 meses atrás";
 
   function definirRisco(umidade, internacoes) {
     const aumento = internacoes.at(-1) - internacoes.at(-3);
