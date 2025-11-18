@@ -6,6 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard de Monitoramento de Hardware - Ventiladores Pulmonares</title>
 
+  <!-- Google Fonts - Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <!-- Lucide Icons CDN -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -20,18 +25,20 @@
     }
 
     body {
-      font-family: "Segoe UI", Arial, sans-serif;
-      background: #f9fafb;
-      color: #111827;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #F3F6F9;
+      color: #1a2332;
       min-height: 100vh;
+      line-height: 1.6;
     }
 
     /* Header */
     header {
-      background: linear-gradient(135deg, #115e59 0%, #0f766e 100%);
+      background: linear-gradient(135deg, #0f766e 0%, #115e59 100%);
       color: white;
-      padding: 32px 32px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      padding: 28px 32px;
+      box-shadow: 0 2px 16px rgba(15, 118, 110, 0.15);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .header-content {
@@ -45,71 +52,82 @@
     .header-left {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 18px;
     }
 
     .header-icon-box {
-      padding: 12px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
+      padding: 14px;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
       backdrop-filter: blur(10px);
       display: flex;
       align-items: center;
       justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
     .header-icon-box svg {
-      width: 32px;
-      height: 32px;
+      width: 28px;
+      height: 28px;
       color: white;
     }
 
     .header-text h1 {
-      font-size: 1.75rem;
-      margin-bottom: 4px;
+      font-size: 1.65rem;
+      margin-bottom: 5px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
     }
 
     .header-text p {
       color: #a7f3d0;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
+      font-weight: 500;
     }
 
     .header-status {
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 12px 20px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
+      gap: 10px;
+      padding: 10px 18px;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
       backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
     .status-dot {
-      width: 8px;
-      height: 8px;
+      width: 7px;
+      height: 7px;
       background: #4ade80;
       border-radius: 50%;
       animation: pulse 2s infinite;
+      box-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.1); }
+    }
+
+    .header-status span {
+      font-size: 0.875rem;
+      font-weight: 600;
     }
 
     /* Container */
     .container {
       max-width: 1600px;
       margin: 0 auto;
-      padding: 40px 32px;
+      padding: 36px 32px;
     }
 
     /* Banner de Análise Geral */
     .analysis-banner {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-      border: 1px solid #e5e7eb;
+      background: #F9FAFB;
+      border-radius: 16px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.02);
+      border: 1px solid #DCE2E8;
       padding: 32px;
       margin-bottom: 32px;
     }
@@ -117,7 +135,7 @@
     .analysis-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
+      gap: 28px;
     }
 
     @media (max-width: 1100px) {
@@ -134,24 +152,26 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
 
     .analysis-icon {
-      padding: 12px;
-      border-radius: 8px;
+      padding: 11px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
+      border: 1px solid;
     }
 
     .analysis-icon svg {
-      width: 24px;
-      height: 24px;
+      width: 22px;
+      height: 22px;
     }
 
     .analysis-icon.red {
-      background: #fef2f2;
+      background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+      border-color: #fecaca;
     }
 
     .analysis-icon.red svg {
@@ -159,7 +179,8 @@
     }
 
     .analysis-icon.orange {
-      background: #fff7ed;
+      background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+      border-color: #fed7aa;
     }
 
     .analysis-icon.orange svg {
@@ -167,7 +188,8 @@
     }
 
     .analysis-icon.blue {
-      background: #eff6ff;
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      border-color: #bfdbfe;
     }
 
     .analysis-icon.blue svg {
@@ -175,70 +197,80 @@
     }
 
     .analysis-title {
-      color: #374151;
+      color: #475569;
       text-transform: uppercase;
-      font-size: 0.875rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
     }
 
     .analysis-subtitle {
-      color: #6b7280;
-      font-size: 0.875rem;
+      color: #94a3b8;
+      font-size: 0.8rem;
+      font-weight: 500;
     }
 
     .risk-box {
-      background: linear-gradient(135deg, #fef2f2 0%, #fed7aa 100%);
-      border: 1px solid #fca5a5;
-      border-radius: 8px;
-      padding: 20px;
+      background: linear-gradient(135deg, #fef2f2 0%, #ffe4e6 100%);
+      border: 1.5px solid #fca5a5;
+      border-radius: 12px;
+      padding: 22px;
     }
 
     .risk-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
+      gap: 20px;
     }
 
     .risk-item {
-      color: #6b7280;
-      font-size: 0.875rem;
+      color: #64748b;
+      font-size: 0.85rem;
     }
 
     .risk-item-label {
-      margin-bottom: 4px;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #475569;
     }
 
     .risk-item-value {
-      color: #111827;
-      font-size: 1rem;
-      margin-bottom: 4px;
+      color: #1e293b;
+      font-size: 1.05rem;
+      margin-bottom: 5px;
+      font-weight: 700;
     }
 
     .risk-item-value.danger {
       color: #dc2626;
-      font-weight: 600;
+      font-weight: 800;
     }
 
     .risk-item-sub {
-      color: #6b7280;
-      font-size: 0.875rem;
+      color: #64748b;
+      font-size: 0.8rem;
     }
 
     .critical-areas {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px;
     }
 
     .critical-area-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: #fff7ed;
-      border: 1px solid #fed7aa;
-      border-radius: 8px;
-      padding: 12px;
+      background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+      border: 1.5px solid #fed7aa;
+      border-radius: 10px;
+      padding: 14px 16px;
+      transition: all 0.2s ease;
+    }
+
+    .critical-area-item:hover {
+      transform: translateX(3px);
+      box-shadow: 0 2px 8px rgba(234, 88, 12, 0.1);
     }
 
     .critical-area-left {
@@ -248,22 +280,26 @@
     }
 
     .critical-dot {
-      width: 8px;
-      height: 8px;
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
+      box-shadow: 0 0 6px currentColor;
     }
 
     .critical-dot.yellow {
       background: #eab308;
+      color: #eab308;
     }
 
     .critical-dot.red {
       background: #dc2626;
+      color: #dc2626;
     }
 
     .critical-area-name {
-      color: #111827;
-      font-weight: 600;
+      color: #1e293b;
+      font-weight: 700;
+      font-size: 0.95rem;
     }
 
     .critical-area-right {
@@ -273,147 +309,158 @@
     }
 
     .critical-badge {
-      padding: 4px 12px;
-      border-radius: 9999px;
-      font-size: 0.875rem;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border: 1px solid;
     }
 
     .critical-badge.yellow {
       background: #fef3c7;
       color: #78350f;
+      border-color: #fde047;
     }
 
     .critical-badge.red {
       background: #fee2e2;
       color: #7f1d1d;
+      border-color: #fca5a5;
     }
 
     .critical-alerts {
-      color: #6b7280;
-      font-size: 0.875rem;
+      color: #64748b;
+      font-size: 0.85rem;
+      font-weight: 600;
     }
 
     .recommendation-box {
-      background: linear-gradient(135deg, #eff6ff 0%, #d1fae5 100%);
-      border: 1px solid #93c5fd;
-      border-radius: 8px;
-      padding: 20px;
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      border: 1.5px solid #93c5fd;
+      border-radius: 12px;
+      padding: 22px;
     }
 
     .recommendation-value {
       color: #1e3a8a;
-      font-size: 1rem;
-      margin-bottom: 8px;
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+      font-weight: 800;
     }
 
     .recommendation-sub {
-      color: #4b5563;
-      font-size: 0.875rem;
+      color: #475569;
+      font-size: 0.85rem;
       margin-bottom: 16px;
+      font-weight: 600;
     }
 
     .recommendation-action {
       display: flex;
       align-items: center;
-      gap: 8px;
-      color: #374151;
-      font-size: 0.875rem;
+      gap: 9px;
+      color: #334155;
+      font-size: 0.85rem;
+      font-weight: 600;
     }
 
     .recommendation-action svg {
-      width: 16px;
-      height: 16px;
+      width: 17px;
+      height: 17px;
       color: #0f766e;
     }
 
     /* KPIs Grid */
     .kpis-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 24px;
-      margin-bottom: 40px;
+      margin-bottom: 36px;
     }
 
     .kpi-card {
       position: relative;
-      background: white;
-      border-radius: 12px;
-      padding: 32px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-      border-bottom: 4px solid;
+      background: #F9FAFB;
+      border-radius: 16px;
+      padding: 32px 28px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.02);
+      border: 1px solid #DCE2E8;
+      border-bottom: 3px solid;
       overflow: hidden;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .kpi-card:hover {
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-      transform: translateY(-4px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.04);
+      transform: translateY(-3px);
     }
 
     .kpi-card.green {
-      border-bottom-color: #16a34a;
+      border-bottom-color: #10b981;
     }
 
     .kpi-card.red {
-      border-bottom-color: #dc2626;
+      border-bottom-color: #ef4444;
     }
 
     .kpi-card.teal {
-      border-bottom-color: #0f766e;
+      border-bottom-color: #14b8a6;
     }
 
     .kpi-bg-circle {
       position: absolute;
-      top: 0;
-      right: 0;
-      width: 128px;
-      height: 128px;
+      top: -20px;
+      right: -20px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
-      opacity: 0.05;
-      transform: translate(48px, -48px);
+      opacity: 0.04;
     }
 
     .kpi-card.green .kpi-bg-circle {
-      background: #16a34a;
+      background: #10b981;
     }
 
     .kpi-card.red .kpi-bg-circle {
-      background: #dc2626;
+      background: #ef4444;
     }
 
     .kpi-card.teal .kpi-bg-circle {
-      background: #0f766e;
+      background: #14b8a6;
     }
 
     .kpi-header {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 24px;
+      gap: 14px;
+      margin-bottom: 22px;
       position: relative;
       z-index: 10;
     }
 
     .kpi-icon {
       padding: 12px;
-      border-radius: 8px;
+      border-radius: 11px;
       display: flex;
       align-items: center;
       justify-content: center;
+      border: 1px solid;
     }
 
     .kpi-card.green .kpi-icon {
-      background: #f0fdf4;
+      background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+      border-color: #a7f3d0;
     }
 
     .kpi-card.green .kpi-icon svg {
-      color: #16a34a;
+      color: #059669;
       width: 24px;
       height: 24px;
     }
 
     .kpi-card.red .kpi-icon {
-      background: #fef2f2;
+      background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+      border-color: #fecaca;
     }
 
     .kpi-card.red .kpi-icon svg {
@@ -423,66 +470,72 @@
     }
 
     .kpi-card.teal .kpi-icon {
-      background: #f0fdfa;
+      background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
+      border-color: #99f6e4;
     }
 
     .kpi-card.teal .kpi-icon svg {
-      color: #0f766e;
+      color: #0d9488;
       width: 24px;
       height: 24px;
     }
 
     .kpi-title {
-      color: #4b5563;
+      color: #64748b;
       text-transform: uppercase;
-      font-size: 0.875rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
     }
 
     .kpi-value {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #111827;
-      margin-bottom: 12px;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      margin-bottom: 10px;
       position: relative;
       z-index: 10;
+      letter-spacing: -0.02em;
     }
 
     .kpi-subtitle {
-      color: #6b7280;
-      font-size: 0.875rem;
+      color: #64748b;
+      font-size: 0.88rem;
       position: relative;
       z-index: 10;
+      font-weight: 500;
     }
 
     /* Distribuição de Ventiladores */
     .distribution-card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-      border: 1px solid #e5e7eb;
-      padding: 32px;
-      margin-bottom: 40px;
+      background: #F9FAFB;
+      border-radius: 16px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.02);
+      border: 1px solid #DCE2E8;
+      padding: 36px 32px;
+      margin-bottom: 36px;
     }
 
     .distribution-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 32px;
+      margin-bottom: 36px;
+      padding-bottom: 24px;
+      border-bottom: 2px solid #e2e8f0;
     }
 
     .distribution-title-area {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 18px;
     }
 
     .distribution-icon-box {
       padding: 16px;
-      background: #f0fdfa;
-      border-radius: 8px;
+      background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
+      border: 1px solid #99f6e4;
+      border-radius: 13px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -491,140 +544,197 @@
     .distribution-icon-box svg {
       width: 32px;
       height: 32px;
-      color: #0f766e;
+      color: #0d9488;
     }
 
     .distribution-title {
-      color: #111827;
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 4px;
+      color: #1e293b;
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+      letter-spacing: -0.02em;
     }
 
     .distribution-subtitle {
-      color: #6b7280;
-      font-size: 0.875rem;
+      color: #64748b;
+      font-size: 0.9rem;
+      font-weight: 500;
     }
 
     .distribution-total {
-      padding: 12px 24px;
-      background: #f0fdfa;
-      border: 1px solid #99f6e4;
-      border-radius: 8px;
+      padding: 14px 26px;
+      background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+      border: 1.5px solid #a7f3d0;
+      border-radius: 12px;
     }
 
     .distribution-total-label {
-      color: #4b5563;
-      font-size: 0.875rem;
-      margin-bottom: 4px;
+      color: #475569;
+      font-size: 0.8rem;
+      margin-bottom: 5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     .distribution-total-value {
-      color: #111827;
-      font-weight: 600;
+      color: #1e293b;
+      font-weight: 800;
       text-align: center;
+      font-size: 1.1rem;
     }
 
     .areas-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
       margin-bottom: 32px;
-    }
-
-    @media (max-width: 1400px) {
-      .areas-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    @media (max-width: 900px) {
-      .areas-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 600px) {
-      .areas-grid {
-        grid-template-columns: 1fr;
-      }
     }
 
     .area-card {
       position: relative;
-      background: #f9fafb;
-      border-radius: 8px;
-      padding: 24px;
+      background: white;
+      border-radius: 14px;
+      padding: 26px 24px;
       border-left: 4px solid;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.02);
     }
 
     .area-card:hover {
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 8px 20px rgba(0, 0, 0, 0.04);
+      transform: translateY(-2px);
     }
 
-    .area-card.risk-low {
-      border-left-color: #16a34a;
+    .area-card.needs-ventilators {
+      border-left-color: #3b82f6;
+      background: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%);
     }
 
-    .area-card.risk-medium {
-      border-left-color: #eab308;
+    .area-card.can-send {
+      border-left-color: #10b981;
+      background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
     }
 
-    .area-card.risk-high {
-      border-left-color: #dc2626;
+    .area-card.neutral {
+      border-left-color: #94a3b8;
+      background: white;
     }
 
     .area-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #e2e8f0;
     }
 
     .area-name {
-      color: #111827;
-      font-weight: 600;
-      font-size: 1rem;
+      color: #1e293b;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.01em;
     }
 
-    .area-trend svg {
-      width: 20px;
-      height: 20px;
+    .area-badge {
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      border: 1px solid;
     }
 
-    .area-trend.up svg {
-      color: #16a34a;
+    .area-badge.needs {
+      background: #dbeafe;
+      color: #1e40af;
+      border-color: #93c5fd;
     }
 
-    .area-trend.down svg {
-      color: #dc2626;
+    .area-badge.can-send {
+      background: #d1fae5;
+      color: #065f46;
+      border-color: #6ee7b7;
     }
 
-    .area-total {
+    .area-badge.neutral {
+      background: #f1f5f9;
+      color: #475569;
+      border-color: #cbd5e1;
+    }
+
+    .area-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
       margin-bottom: 20px;
     }
 
-    .area-total-number {
-      color: #111827;
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-right: 8px;
+    .stat-item {
+      text-align: center;
+      padding: 12px 8px;
+      background: #f8fafc;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
     }
 
-    .area-total-label {
-      color: #6b7280;
-      font-size: 0.875rem;
+    .stat-label {
+      color: #64748b;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+
+    .stat-value {
+      color: #1e293b;
+      font-size: 1.3rem;
+      font-weight: 800;
+    }
+
+    .stat-value.highlight {
+      color: #3b82f6;
+    }
+
+    .stat-value.success {
+      color: #10b981;
+    }
+
+    .stability-section {
+      margin-bottom: 20px;
+    }
+
+    .stability-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .stability-label {
+      color: #475569;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .stability-percent {
+      color: #1e293b;
+      font-size: 0.9rem;
+      font-weight: 800;
     }
 
     .stability-bar {
       position: relative;
       width: 100%;
-      height: 12px;
-      background: #e5e7eb;
-      border-radius: 9999px;
+      height: 10px;
+      background: #e2e8f0;
+      border-radius: 10px;
       overflow: hidden;
-      margin-bottom: 12px;
     }
 
     .stability-bar-fill {
@@ -632,254 +742,280 @@
       top: 0;
       left: 0;
       height: 100%;
-      background: #16a34a;
-      border-radius: 9999px;
-      transition: width 0.5s ease;
+      background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+      border-radius: 10px;
+      transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 0 8px rgba(16, 185, 129, 0.3);
     }
 
     .status-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
-      margin-bottom: 12px;
+      gap: 10px;
+      margin-bottom: 18px;
     }
 
     .status-item {
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 8px;
+      gap: 9px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid;
     }
 
     .status-item.stable {
-      background: #f0fdf4;
-      border: 1px solid #bbf7d0;
+      background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+      border-color: #a7f3d0;
     }
 
     .status-item.stable svg {
-      width: 16px;
-      height: 16px;
-      color: #16a34a;
+      width: 18px;
+      height: 18px;
+      color: #059669;
     }
 
     .status-item.stable span {
-      color: #15803d;
-      font-size: 0.875rem;
+      color: #065f46;
+      font-size: 0.9rem;
+      font-weight: 700;
     }
 
     .status-item.alert {
-      background: #fef2f2;
-      border: 1px solid #fecaca;
+      background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+      border-color: #fecaca;
     }
 
     .status-item.alert svg {
-      width: 16px;
-      height: 16px;
+      width: 18px;
+      height: 18px;
       color: #dc2626;
     }
 
     .status-item.alert span {
       color: #991b1b;
-      font-size: 0.875rem;
+      font-size: 0.9rem;
+      font-weight: 700;
     }
 
     .hardware-section {
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
 
     .hardware-label {
-      color: #4b5563;
+      color: #475569;
       font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      font-weight: 700;
     }
 
     .hardware-metrics {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
 
     .hardware-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 8px 12px;
-      background: white;
-      border: 1px solid #e5e7eb;
-      border-radius: 8px;
+      padding: 10px 14px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      transition: all 0.2s ease;
+    }
+
+    .hardware-item:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
     }
 
     .hardware-item-left {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
     .hardware-item-left svg {
-      width: 16px;
-      height: 16px;
+      width: 18px;
+      height: 18px;
     }
 
     .hardware-item-left.cpu svg {
-      color: #2563eb;
+      color: #3b82f6;
     }
 
     .hardware-item-left.battery svg {
-      color: #16a34a;
+      color: #10b981;
     }
 
     .hardware-item-label {
-      color: #374151;
-      font-size: 0.875rem;
+      color: #475569;
+      font-size: 0.85rem;
+      font-weight: 600;
     }
 
     .hardware-item-value {
-      font-size: 0.875rem;
+      font-size: 0.9rem;
+      font-weight: 800;
     }
 
     .hardware-item-value.normal {
-      color: #2563eb;
+      color: #3b82f6;
     }
 
     .hardware-item-value.warning {
-      color: #dc2626;
-      font-weight: 600;
+      color: #ef4444;
     }
 
-    .risk-box-area {
-      padding: 12px;
-      border-radius: 8px;
-      margin-bottom: 12px;
-    }
-
-    .risk-box-area.low {
-      background: #f0fdf4;
-      border: 1px solid #bbf7d0;
-    }
-
-    .risk-box-area.medium {
-      background: #fefce8;
-      border: 1px solid #fde047;
-    }
-
-    .risk-box-area.high {
-      background: #fef2f2;
-      border: 1px solid #fecaca;
-    }
-
-    .risk-box-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-
-    .risk-box-label {
-      color: #374151;
-      font-size: 0.875rem;
-    }
-
-    .risk-box-level {
-      font-weight: 600;
-    }
-
-    .risk-box-level.low {
-      color: #15803d;
-    }
-
-    .risk-box-level.medium {
-      color: #a16207;
-    }
-
-    .risk-box-level.high {
-      color: #991b1b;
-    }
-
-    .risk-box-percent {
-      font-size: 1.125rem;
-    }
-
+    /* Recommendation Box - Área precisa receber */
     .recommendation-box-area {
-      background: #eff6ff;
-      border: 1px solid #93c5fd;
-      border-radius: 8px;
-      padding: 12px;
-      margin-bottom: 12px;
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      border: 1.5px solid #60a5fa;
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin-bottom: 14px;
     }
 
     .recommendation-header {
       display: flex;
       align-items: center;
-      gap: 8px;
-      margin-bottom: 8px;
+      gap: 10px;
+      margin-bottom: 12px;
     }
 
     .recommendation-header svg {
-      width: 16px;
-      height: 16px;
-      color: #2563eb;
+      width: 20px;
+      height: 20px;
+      color: #1d4ed8;
     }
 
     .recommendation-label {
       color: #1e40af;
-      font-size: 0.875rem;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     .recommendation-text {
       color: #1e3a8a;
-      font-size: 0.875rem;
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.4;
     }
 
     .recommendation-text strong {
-      font-weight: 700;
+      font-weight: 900;
+      color: #1e40af;
     }
 
-    .relocate-box {
+    /* Send Box - Área pode enviar */
+    .send-box-area {
+      background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+      border: 1.5px solid #6ee7b7;
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin-bottom: 14px;
+    }
+
+    .send-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .send-header svg {
+      width: 20px;
+      height: 20px;
+      color: #059669;
+    }
+
+    .send-label {
+      color: #065f46;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .send-text {
+      color: #064e3b;
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .send-text strong {
+      font-weight: 900;
+      color: #065f46;
+    }
+
+    .available-box {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 8px 12px;
-      background: #f0fdfa;
-      border: 1px solid #99f6e4;
-      border-radius: 8px;
+      padding: 12px 16px;
+      background: #f8fafc;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
     }
 
-    .relocate-left {
+    .available-left {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
-    .relocate-left svg {
-      width: 16px;
-      height: 16px;
-      color: #0f766e;
+    .available-left svg {
+      width: 18px;
+      height: 18px;
+      color: #64748b;
     }
 
-    .relocate-label {
-      color: #374151;
-      font-size: 0.875rem;
+    .available-label {
+      color: #475569;
+      font-size: 0.85rem;
+      font-weight: 700;
     }
 
-    .relocate-value {
-      color: #0f766e;
-      font-weight: 600;
+    .available-value {
+      color: #1e293b;
+      font-weight: 800;
+      font-size: 1.05rem;
+    }
+
+    .available-value.zero {
+      color: #94a3b8;
+    }
+
+    .available-value.positive {
+      color: #059669;
     }
 
     /* Legenda */
     .legend-section {
-      margin-top: 32px;
-      padding-top: 24px;
-      border-top: 1px solid #e5e7eb;
+      margin-top: 36px;
+      padding-top: 28px;
+      border-top: 2px solid #e2e8f0;
+    }
+
+    .legend-title {
+      color: #1e293b;
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
     }
 
     .legend-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      gap: 20px;
     }
 
     @media (max-width: 900px) {
@@ -891,136 +1027,136 @@
     .legend-item {
       display: flex;
       align-items: start;
-      gap: 12px;
+      gap: 14px;
     }
 
     .legend-icon {
-      padding: 8px;
-      border-radius: 8px;
+      padding: 10px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       margin-top: 2px;
+      border: 1px solid;
     }
 
-    .legend-icon.green {
-      background: #f0fdf4;
-      border: 1px solid #bbf7d0;
+    .legend-icon.needs {
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      border-color: #93c5fd;
     }
 
-    .legend-icon.green svg {
-      width: 16px;
-      height: 16px;
-      color: #16a34a;
+    .legend-icon.needs svg {
+      width: 18px;
+      height: 18px;
+      color: #2563eb;
     }
 
-    .legend-icon.red {
-      background: #fef2f2;
-      border: 1px solid #fecaca;
+    .legend-icon.can-send {
+      background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+      border-color: #6ee7b7;
     }
 
-    .legend-icon.red svg {
-      width: 16px;
-      height: 16px;
-      color: #dc2626;
+    .legend-icon.can-send svg {
+      width: 18px;
+      height: 18px;
+      color: #059669;
     }
 
-    .legend-icon.teal {
-      background: #f0fdfa;
-      border: 1px solid #99f6e4;
+    .legend-icon.neutral {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border-color: #cbd5e1;
     }
 
-    .legend-icon.teal svg {
-      width: 16px;
-      height: 16px;
-      color: #0f766e;
+    .legend-icon.neutral svg {
+      width: 18px;
+      height: 18px;
+      color: #64748b;
     }
 
     .legend-text-title {
-      color: #15803d;
-      margin-bottom: 4px;
-      font-weight: 600;
-      font-size: 0.875rem;
-    }
-
-    .legend-text-title.red {
-      color: #991b1b;
-    }
-
-    .legend-text-title.teal {
-      color: #0f766e;
+      color: #1e293b;
+      margin-bottom: 6px;
+      font-weight: 800;
+      font-size: 0.9rem;
     }
 
     .legend-text-desc {
-      color: #6b7280;
-      font-size: 0.75rem;
+      color: #64748b;
+      font-size: 0.8rem;
+      font-weight: 500;
+      line-height: 1.5;
     }
 
     /* Gráfico de Umidade */
     .humidity-card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-      border: 1px solid #e5e7eb;
-      padding: 32px;
+      background: #F9FAFB;
+      border-radius: 16px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.02);
+      border: 1px solid #DCE2E8;
+      padding: 36px 32px;
     }
 
     .humidity-header {
       display: flex;
       align-items: center;
-      gap: 16px;
-      margin-bottom: 24px;
+      gap: 18px;
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #e2e8f0;
     }
 
     .humidity-icon-box {
-      padding: 12px;
-      background: #eff6ff;
-      border-radius: 8px;
+      padding: 14px;
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      border: 1px solid #93c5fd;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     .humidity-icon-box svg {
-      width: 24px;
-      height: 24px;
+      width: 28px;
+      height: 28px;
       color: #2563eb;
     }
 
     .humidity-title {
-      color: #111827;
-      font-size: 1.125rem;
-      font-weight: 700;
-      margin-bottom: 4px;
+      color: #1e293b;
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+      letter-spacing: -0.02em;
     }
 
     .humidity-subtitle {
-      color: #6b7280;
-      font-size: 0.875rem;
+      color: #64748b;
+      font-size: 0.9rem;
+      font-weight: 500;
     }
 
     .humidity-alert {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 12px 16px;
-      background: #fef2f2;
-      border: 1px solid #fecaca;
-      border-radius: 8px;
+      gap: 10px;
+      padding: 14px 20px;
+      background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+      border: 1.5px solid #fca5a5;
+      border-radius: 12px;
       width: fit-content;
-      margin: 24px auto 0;
+      margin: 28px auto 0;
     }
 
     .humidity-alert svg {
-      width: 16px;
-      height: 16px;
+      width: 18px;
+      height: 18px;
       color: #dc2626;
     }
 
     .humidity-alert span {
       color: #991b1b;
-      font-size: 0.875rem;
+      font-size: 0.9rem;
+      font-weight: 700;
     }
   </style>
 </head>
@@ -1167,7 +1303,7 @@
           </div>
           <div>
             <h2 class="distribution-title">Distribuição e Balanceamento de Ventiladores</h2>
-            <p class="distribution-subtitle">Monitoramento de hardware por área hospitalar</p>
+            <p class="distribution-subtitle">Monitoramento de hardware e recomendações de remanejamento por área hospitalar</p>
           </div>
         </div>
         <div class="distribution-total">
@@ -1183,32 +1319,33 @@
 
       <!-- Legenda -->
       <div class="legend-section">
+        <h3 class="legend-title">Legenda de Interpretação</h3>
         <div class="legend-grid">
           <div class="legend-item">
-            <div class="legend-icon green">
-              <i data-lucide="check-circle-2"></i>
+            <div class="legend-icon needs">
+              <i data-lucide="arrow-down-circle"></i>
             </div>
             <div>
-              <div class="legend-text-title">Estáveis</div>
-              <div class="legend-text-desc">Ventiladores operando com hardware normal</div>
+              <div class="legend-text-title">Necessita Ventiladores</div>
+              <div class="legend-text-desc">Áreas que precisam receber ventiladores adicionais para atender a demanda crítica</div>
             </div>
           </div>
           <div class="legend-item">
-            <div class="legend-icon red">
-              <i data-lucide="x-circle"></i>
+            <div class="legend-icon can-send">
+              <i data-lucide="arrow-up-circle"></i>
             </div>
             <div>
-              <div class="legend-text-title red">Com Alertas</div>
-              <div class="legend-text-desc">Ventiladores com falhas de hardware detectadas</div>
+              <div class="legend-text-title">Pode Enviar</div>
+              <div class="legend-text-desc">Áreas com capacidade de ceder ventiladores (até 70% do total) para outras áreas</div>
             </div>
           </div>
           <div class="legend-item">
-            <div class="legend-icon teal">
-              <i data-lucide="refresh-ccw"></i>
+            <div class="legend-icon neutral">
+              <i data-lucide="minus-circle"></i>
             </div>
             <div>
-              <div class="legend-text-title teal">Disponíveis para Remanejamento</div>
-              <div class="legend-text-desc">Unidades que podem ser transferidas para outras áreas</div>
+              <div class="legend-text-title">Status Neutro</div>
+              <div class="legend-text-desc">Áreas com capacidade estável, sem necessidade ou disponibilidade de transferência</div>
             </div>
           </div>
         </div>
@@ -1243,8 +1380,7 @@
         stable: 17,
         alerts: 3,
         risk: 15,
-        canRelocate: 4,
-        recommendedToReceive: 5,
+        needsToReceive: 5, // Precisa receber
         cpuAvg: 68,
         batteryAvg: 92,
         trend: "up"
@@ -1255,8 +1391,7 @@
         stable: 8,
         alerts: 4,
         risk: 33,
-        canRelocate: 2,
-        recommendedToReceive: 3,
+        needsToReceive: 3, // Precisa receber
         cpuAvg: 75,
         batteryAvg: 85,
         trend: "up"
@@ -1267,8 +1402,7 @@
         stable: 5,
         alerts: 1,
         risk: 17,
-        canRelocate: 2,
-        recommendedToReceive: 0,
+        needsToReceive: 0, // Não precisa
         cpuAvg: 52,
         batteryAvg: 95,
         trend: "down"
@@ -1279,8 +1413,7 @@
         stable: 1,
         alerts: 1,
         risk: 50,
-        canRelocate: 0,
-        recommendedToReceive: 2,
+        needsToReceive: 2, // Precisa receber
         cpuAvg: 82,
         batteryAvg: 78,
         trend: "down"
@@ -1291,29 +1424,32 @@
         stable: 2,
         alerts: 1,
         risk: 33,
-        canRelocate: 1,
-        recommendedToReceive: 1,
+        needsToReceive: 1, // Precisa receber
         cpuAvg: 71,
         batteryAvg: 88,
         trend: "down"
       }
     ];
 
-    // Função para obter cor de risco
-    function getRiskClass(risk) {
-      if (risk <= 20) return { class: 'low', label: 'Baixo', dotClass: 'green' };
-      if (risk <= 35) return { class: 'medium', label: 'Moderado', dotClass: 'yellow' };
-      return { class: 'high', label: 'Alto', dotClass: 'red' };
-    }
-
     // Calcular totais
     const totalVentilators = ventilatorAreas.reduce((sum, area) => sum + area.total, 0);
     const totalStable = ventilatorAreas.reduce((sum, area) => sum + area.stable, 0);
     const totalAlerts = ventilatorAreas.reduce((sum, area) => sum + area.alerts, 0);
-    const totalCanRelocate = ventilatorAreas.reduce((sum, area) => sum + area.canRelocate, 0);
     const stabilityIndex = Math.round((totalStable / totalVentilators) * 100);
     const highestRiskArea = ventilatorAreas.reduce((max, area) => area.risk > max.risk ? area : max);
     const areasNeedingReinforcement = ventilatorAreas.filter(area => area.risk >= 30);
+
+    // Calcular capacidade de envio (máximo 70% do total)
+    ventilatorAreas.forEach(area => {
+      const maxCanSend = Math.floor(area.total * 0.7);
+      area.canSend = area.needsToReceive === 0 ? maxCanSend : 0;
+    });
+
+    // Identificar áreas que precisam e áreas prioritárias
+    const areasNeedingVentilators = ventilatorAreas.filter(area => area.needsToReceive > 0);
+    const primaryTarget = areasNeedingVentilators.sort((a, b) => b.risk - a.risk)[0]; // Área com maior risco
+
+    const totalCanRelocate = ventilatorAreas.reduce((sum, area) => sum + area.canSend, 0);
 
     // Preencher KPIs
     document.getElementById('stabilityIndex').textContent = stabilityIndex;
@@ -1324,19 +1460,26 @@
     document.getElementById('totalRelocate').textContent = totalCanRelocate;
     document.getElementById('totalVentilators').textContent = totalVentilators;
 
+    // Função para obter cor de risco badge
+    function getRiskBadgeClass(risk) {
+      if (risk <= 20) return 'green';
+      if (risk <= 35) return 'yellow';
+      return 'red';
+    }
+
     // Preencher Áreas Críticas
     const criticalAreasContainer = document.getElementById('criticalAreasContainer');
     areasNeedingReinforcement.forEach(area => {
-      const riskData = getRiskClass(area.risk);
+      const badgeClass = getRiskBadgeClass(area.risk);
       const div = document.createElement('div');
       div.className = 'critical-area-item';
       div.innerHTML = `
         <div class="critical-area-left">
-          <div class="critical-dot ${riskData.dotClass}"></div>
+          <div class="critical-dot ${badgeClass}"></div>
           <span class="critical-area-name">${area.name}</span>
         </div>
         <div class="critical-area-right">
-          <span class="critical-badge ${riskData.dotClass}">
+          <span class="critical-badge ${badgeClass}">
             ${area.risk}% risco
           </span>
           <span class="critical-alerts">${area.alerts} alertas</span>
@@ -1348,23 +1491,77 @@
     // Preencher Grid de Áreas
     const areasGrid = document.getElementById('areasGrid');
     ventilatorAreas.forEach(area => {
-      const riskData = getRiskClass(area.risk);
       const stabilityPercent = Math.round((area.stable / area.total) * 100);
 
-      const areaCard = document.createElement('div');
-      areaCard.className = `area-card risk-${riskData.class}`;
+      // Determinar tipo de área
+      let areaType = 'neutral';
+      let badgeText = 'Estável';
+      let badgeClass = 'neutral';
       
-      let recommendationHTML = '';
-      if (area.recommendedToReceive > 0) {
-        recommendationHTML = `
+      if (area.needsToReceive > 0) {
+        areaType = 'needs-ventilators';
+        badgeText = 'Necessita';
+        badgeClass = 'needs';
+      } else if (area.canSend > 0) {
+        areaType = 'can-send';
+        badgeText = 'Disponível';
+        badgeClass = 'can-send';
+      }
+
+      const areaCard = document.createElement('div');
+      areaCard.className = `area-card ${areaType}`;
+      
+      // Gerar recomendação ou envio
+      let actionHTML = '';
+      if (area.needsToReceive > 0) {
+        // Área PRECISA receber
+        actionHTML = `
           <div class="recommendation-box-area">
             <div class="recommendation-header">
               <i data-lucide="lightbulb"></i>
               <span class="recommendation-label">Recomendação</span>
             </div>
             <div class="recommendation-text">
-              Adicionar <strong>+${area.recommendedToReceive}</strong> ventiladores
+              Adicionar <strong>+${area.needsToReceive} ventiladores</strong>
             </div>
+          </div>
+          <div class="available-box">
+            <div class="available-left">
+              <i data-lucide="package"></i>
+              <span class="available-label">Disponíveis para envio</span>
+            </div>
+            <span class="available-value zero">0</span>
+          </div>
+        `;
+      } else if (area.canSend > 0 && primaryTarget) {
+        // Área PODE enviar
+        actionHTML = `
+          <div class="send-box-area">
+            <div class="send-header">
+              <i data-lucide="send"></i>
+              <span class="send-label">Pode Enviar</span>
+            </div>
+            <div class="send-text">
+              Enviar <strong>${Math.min(area.canSend, primaryTarget.needsToReceive)} ventiladores</strong> para ${primaryTarget.name}
+            </div>
+          </div>
+          <div class="available-box">
+            <div class="available-left">
+              <i data-lucide="package"></i>
+              <span class="available-label">Disponíveis para envio</span>
+            </div>
+            <span class="available-value positive">${area.canSend}</span>
+          </div>
+        `;
+      } else {
+        // Neutro
+        actionHTML = `
+          <div class="available-box">
+            <div class="available-left">
+              <i data-lucide="package"></i>
+              <span class="available-label">Disponíveis para envio</span>
+            </div>
+            <span class="available-value zero">0</span>
           </div>
         `;
       }
@@ -1372,18 +1569,32 @@
       areaCard.innerHTML = `
         <div class="area-header">
           <h3 class="area-name">${area.name}</h3>
-          <div class="area-trend ${area.trend}">
-            <i data-lucide="${area.trend === 'up' ? 'trending-up' : 'trending-down'}"></i>
+          <div class="area-badge ${badgeClass}">${badgeText}</div>
+        </div>
+        
+        <div class="area-stats">
+          <div class="stat-item">
+            <div class="stat-label">Atual</div>
+            <div class="stat-value">${area.total}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Pode Ceder</div>
+            <div class="stat-value success">${area.canSend}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Precisa</div>
+            <div class="stat-value highlight">${area.needsToReceive}</div>
           </div>
         </div>
         
-        <div class="area-total">
-          <span class="area-total-number">${area.total}</span>
-          <span class="area-total-label">ventiladores</span>
-        </div>
-        
-        <div class="stability-bar">
-          <div class="stability-bar-fill" style="width: ${stabilityPercent}%"></div>
+        <div class="stability-section">
+          <div class="stability-header">
+            <span class="stability-label">Estabilidade</span>
+            <span class="stability-percent">${stabilityPercent}%</span>
+          </div>
+          <div class="stability-bar">
+            <div class="stability-bar-fill" style="width: ${stabilityPercent}%"></div>
+          </div>
         </div>
         
         <div class="status-grid">
@@ -1417,23 +1628,7 @@
           </div>
         </div>
         
-        <div class="risk-box-area ${riskData.class}">
-          <div class="risk-box-header">
-            <span class="risk-box-label">Nível de Risco</span>
-            <span class="risk-box-level ${riskData.class}">${riskData.label}</span>
-          </div>
-          <div class="risk-box-percent ${riskData.class}">${area.risk}%</div>
-        </div>
-        
-        ${recommendationHTML}
-        
-        <div class="relocate-box">
-          <div class="relocate-left">
-            <i data-lucide="refresh-ccw"></i>
-            <span class="relocate-label">Disponíveis</span>
-          </div>
-          <span class="relocate-value">${area.canRelocate}</span>
-        </div>
+        ${actionHTML}
       `;
       
       areasGrid.appendChild(areaCard);
@@ -1464,7 +1659,7 @@
         type: 'bar',
         height: 280,
         toolbar: { show: false },
-        fontFamily: 'Segoe UI, Arial, sans-serif'
+        fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif'
       },
       series: [{
         name: 'Umidade',
@@ -1474,20 +1669,22 @@
         categories: humidityData.map(d => d.month),
         labels: {
           style: {
-            colors: '#374151',
+            colors: '#475569',
             fontSize: '12px',
-            fontWeight: 600
+            fontWeight: 600,
+            fontFamily: 'Inter, sans-serif'
           }
         },
-        axisBorder: { show: true, color: '#6b7280' },
+        axisBorder: { show: true, color: '#cbd5e1' },
         axisTicks: { show: false }
       },
       yaxis: {
         labels: {
           style: {
-            colors: '#374151',
+            colors: '#475569',
             fontSize: '12px',
-            fontWeight: 600
+            fontWeight: 600,
+            fontFamily: 'Inter, sans-serif'
           }
         }
       },
@@ -1496,21 +1693,22 @@
         style: {
           fontSize: '12px',
           fontWeight: 700,
-          colors: ['#fff']
+          colors: ['#fff'],
+          fontFamily: 'Inter, sans-serif'
         },
         offsetY: -20
       },
       grid: {
         show: true,
-        borderColor: '#e5e7eb',
+        borderColor: '#e2e8f0',
         strokeDashArray: 3,
         xaxis: { lines: { show: false } }
       },
-      colors: humidityData.map(d => d.month === 'Ago' ? '#dc2626' : '#3b82f6'),
+      colors: humidityData.map(d => d.month === 'Ago' ? '#ef4444' : '#3b82f6'),
       plotOptions: {
         bar: {
           distributed: true,
-          borderRadius: 8,
+          borderRadius: 10,
           borderRadiusApplication: 'end',
           columnWidth: '60%'
         }
@@ -1520,6 +1718,9 @@
         enabled: true,
         y: {
           formatter: function (val) { return val + '%' }
+        },
+        style: {
+          fontFamily: 'Inter, sans-serif'
         }
       }
     };
