@@ -41,7 +41,7 @@ def baixar_umidade_estado(sigla, lat, lon):
         "&timezone=America/Sao_Paulo" # Fuso horário brasileiro na API
     )
     
-    # ⚠️ Importante: Para funções Lambda, é bom usar try/except para requisições externas
+    # Importante: Para funções Lambda, é bom usar try/except para requisições externas
     try:
         response = urllib.request.urlopen(url)
         data = json.loads(response.read())
